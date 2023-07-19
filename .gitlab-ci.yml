@@ -32,6 +32,10 @@ pre-job:
 
 build-job:
   stage: build
+  before_script:
+    - echo "开始build镜像."
+  after_script:
+    - echo "镜像build完成."
   script:
     - docker build . -t cicd-test
 #   保存镜像cicd-test 为  cicd-test.tar.gz
