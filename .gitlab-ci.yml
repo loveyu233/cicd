@@ -1,22 +1,26 @@
-variables:
-  GIT_DEPTH: "50"
-
+# 声明任务且按照顺序执行,相同类型的任务如果runner有剩余则并行执行
 stages:
   - pre
   - build
   - run
 
+# 声明一个工作流
 workflow:
+#  配置什么时候会触发流水线
   rules:
+#    如果当前的 CI 合并请求目标分支名称是 "main"，则运行
     - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
       when: always
+#    如果 CI 流水线源是通过推送触发的，则不运行
     - if: '$CI_PIPELINE_SOURCE  == "push"'
       when: never
+#    如果 CI 流水线源是通过拉取请求触发的，则运行。
     - if: '$CI_PIPELINE_SOURCE == "pull_request"'
       when: always
 
 pre-job:
   stage: pre
+#  如果这个任务失败不会停止,而是继续下一个任务执行
   allow_failure: true
   script:
     - docker stop t1
@@ -30,9 +34,13 @@ build-job:
   stage: build
   script:
     - docker build . -t cicd-test
+#   保存镜像cicd-test 为  cicd-test.tar.gz
     - docker save cicd-test -o cicd-test.tar.gz
+#   保存流水线所产出的文件，可以再流水线中下载这个文件
   artifacts:
+#   位置
     paths:
+#     docker load -i image.tar 使用这个镜像
       - cicd-test.tar.gz
 
 run-job:
