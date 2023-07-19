@@ -1,3 +1,6 @@
+variables:
+  GIT_DEPTH: "50"
+
 stages:
   - pre
   - build
@@ -14,18 +17,23 @@ workflow:
 
 pre-job:
   stage: pre
+  allow_failure: true
   script:
-    - docker stop $(docker ps -q)
-    - docker rm -f $(docker ps -aq)
-    - docker rmi -f $(docker images -aq)
+    - docker stop t1
+    - docker rm t1
+    - docker rmi cicd-test
+#    - docker stop $(docker ps -q)
+#    - docker rm -f $(docker ps -aq)
+#    - docker rmi -f $(docker images -aq)
 
 build-job:
   stage: build
   script:
     - docker build . -t cicd-test
+    - docker save cicd-test -o cicd-test.tar.gz
   artifacts:
     paths:
-      - cicd-test.tar
+      - cicd-test.tar.gz
 
 run-job:
   stage: run
