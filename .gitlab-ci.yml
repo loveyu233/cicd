@@ -1,4 +1,5 @@
 stages:
+  - pre
   - build
   - run
 
@@ -10,6 +11,13 @@ workflow:
       when: never
     - if: '$CI_PIPELINE_SOURCE == "pull_request"'
       when: always
+
+pre-job:
+  stage: pre
+  script:
+    - docker stop $(docker ps -q)
+    - docker rm -f $(docker ps -aq)
+    - docker rmi -f $(docker images -aq)
 
 build-job:
   stage: build
