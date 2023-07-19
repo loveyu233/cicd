@@ -4,10 +4,12 @@ stages:
 
 workflow:
   rules:
-    - if: '$CI_PIPELINE_SOURCE  == "push"'
-      when: never
-    - if: '$CI_PIPELINE_SOURCE == "pull_request"'
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
       when: always
+#    - if: '$CI_PIPELINE_SOURCE  == "push"'
+#      when: never
+#    - if: '$CI_PIPELINE_SOURCE == "pull_request"'
+#      when: always
 
 build-job:
   stage: build
