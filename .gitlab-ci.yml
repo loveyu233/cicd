@@ -6,6 +6,8 @@ workflow:
   rules:
     - if: '$CI_PIPELINE_SOURCE  == "push"'
       when: never
+    - if: '$CI_PIPELINE_SOURCE == "clone"'
+      when: always
 
 build-job:
   stage: build
