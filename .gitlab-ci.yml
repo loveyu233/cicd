@@ -51,3 +51,11 @@ run-job:
   stage: run
   script:
     - docker run -d -p 9999:9999 --name t1 cicd-test
+
+push-job:
+  stage: run
+  script:
+#   给镜像添加tag
+    - docker tag cicd-test loveyu233/cicd-test
+#   上传镜像备份
+    - docker push loveyu233/cicd-test
