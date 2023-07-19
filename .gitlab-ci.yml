@@ -1,8 +1,13 @@
 stages:
   - build
+  - run
 
 build-job:
   stage: build
   script:
     - docker build . -t cicd-test
+
+run-job:
+  stage: run
+  script:
     - docker run -d -p 9999:9999 --name t1 cicd-test
