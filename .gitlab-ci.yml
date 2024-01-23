@@ -11,7 +11,7 @@ workflow:
 #    如果当前的 CI 合并请求目标分支名称是 "main"，则运行
     - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
       when: always
-#    如果 CI 流水线源是通过推送触发的，则不运行
+#    如果 CI 流水线源是通过推送触发的，则不运行   
     - if: '$CI_PIPELINE_SOURCE  == "push"'
       when: never
 #    如果 CI 流水线源是通过拉取请求触发的，则运行。
