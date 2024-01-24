@@ -14,7 +14,7 @@ config work[dev]:
     - test-cicd-tag
   script:
     - ls
-    - kubectl create configmap dev-cicdTest-config -n testns --from-file etc/config.dev.json --dry-run=client -o yaml | kubectl apply -f -
+    - kubectl create configmap dev-cicdTest-config -n testns --from-file etc/config.dev.json --dry-run=client -o yaml
 
 config work[test]:
   stage: config
