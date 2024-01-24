@@ -1,9 +1,5 @@
 stages:
 
 deploy:
-  image: kubectl:1.16.6
-  stage: deploy 
   script: 
-    - mkdir $HOME/.kube && cat $K8S_CONFIG > $HOME/.kube/config
-    - cd $HOME/.kube && pwd
-    - kubectl get pods -A 
+    - echo "aaaa"
