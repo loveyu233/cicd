@@ -11,7 +11,7 @@ config work[dev]:
   only:
     - release-dev
   tags:
-    - k8s-group-dev
+    - test-cicd-tag
   script:
     - kubectl create configmap dev-cicdTest-config -n testNS --from-file etc/config.dev.json --dry-run -o yaml | kubectl apply -f -
 
@@ -20,27 +20,27 @@ config work[test]:
   only:
     - release-test
   tags:
-    - k8s-group-test
+    - test-cicd-tag
   script:
     - kubectl create configmap dev-cicdTest-config -n testNS --from-file etc/config.test.json --dry-run -o yaml | kubectl apply -f -
 
 build work - system:
   stage: build
   tags:
-    - k8s-group-build
+    - test-cicd-tag
   script:
     - echo "build hello"
 
 deploy work - system[dev]:
   stage: deploy
   tags:
-    - k8s-group-dev
+    - test-cicd-tag
   script:
     - echo "deploy-dev hello"
 
 deploy work - system[test]:
   stage: deploy
   tags:
-    - k8s-group-test
+    - test-cicd-tag
   script:
     - echo "deploy-test hello"
