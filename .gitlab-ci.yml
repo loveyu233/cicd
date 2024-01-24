@@ -1,46 +1,9 @@
-before_script:
-  - export SYSTEM_VERSION=$CI_COMMIT_REF_NAME-v1.0.0
-
 stages:
-  - config
-  - build
-  - deploy
 
-config work[dev]:
-  stage: config
-  only:
-    - release-dev
-  tags:
-    - test-cicd-tag
-  script:
-    - kubectl create configmap dev-cicdTest-config -n testNS --from-file etc/config.dev.json --dry-run -o yaml | kubectl apply -f -
-
-config work[test]:
-  stage: config
-  only:
-    - release-test
-  tags:
-    - test-cicd-tag
-  script:
-    - kubectl create configmap dev-cicdTest-config -n testNS --from-file etc/config.test.json --dry-run -o yaml | kubectl apply -f -
-
-build work - system:
-  stage: build
-  tags:
-    - test-cicd-tag
-  script:
-    - echo "build hello"
-
-deploy work - system[dev]:
-  stage: deploy
-  tags:
-    - test-cicd-tag
-  script:
-    - echo "deploy-dev hello"
-
-deploy work - system[test]:
-  stage: deploy
-  tags:
-    - test-cicd-tag
-  script:
-    - echo "deploy-test hello"
+deploy:
+  image: kubectl:1.16.6
+  stage: deploy 
+  script: 
+    - mkdir $HOME/.kube && cat $K8S_CONFIG > $HOME/.kube/config
+    - cd $HOME/.kube && pwd
+    - kubectl get pods -A 
