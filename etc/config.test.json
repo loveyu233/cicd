@@ -1,0 +1,6 @@
+{
+  "app": {
+    "name": "cicd-test",
+    "version": "v1.0.1"
+  }
+}
