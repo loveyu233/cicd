@@ -1,4 +1,5 @@
 job:
   when: delayed
   start_in: "10"
-  script: echo "hello"
+  script: echo1 "hello"
+  retry: 2
