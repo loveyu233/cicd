@@ -27,4 +27,6 @@ module-b-test:
   script: 
     - echo "ehllo module-b-test"
     - sleep 10
-  needs: ["module-b-build"]
+  needs: 
+    - job: ["module-b-build"]
+      artifacts: tre
