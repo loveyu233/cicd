@@ -1,5 +1,5 @@
 variables:
-  VAR: abc
+  VAR: abcd
 
 workflow:
   rules:
