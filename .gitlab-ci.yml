@@ -1,14 +1,30 @@
-job:
-  script: echo "adsad" >> a.txt
-  artifacts:
-    expose_as: "name_1"
-    name: "a"
-    when: always
-    expire_in: 1 week
-    paths:
-      - a.txt
+stages:
+  - build
+  - test
+  - deploy
 
-job2:
-  dependencies:
-    - job
-  script: ls
+module-a-build:
+  stage: build
+  script:
+    - echo "hello module-a-build"
+    - sleep 10
+
+module-b-build:
+  stage: build
+  script:
+    - echo "hello module-b-build"
+    - sleep 10
+
+module-a-test:
+  stage: test
+  script:
+    - echo "hello module-a-test"
+    - sleep 10
+  needs: ["module-a-build"]
+
+module-b-test:
+  stage: test
+  script: 
+    - echo "ehllo module-b-test"
+    - sleep 10
+  needs: ["module-b-build"]
