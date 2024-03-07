@@ -1,7 +1,14 @@
 job:
-  script: echo "adsad"
+  script: echo "adsad" >> a.txt
   artifacts:
     expose_as: "name_1"
-    name: "main"
+    name: "a"
+    when: always
+    expire_in: 1 week
     paths:
-      - main.go
+      - a.txt
+
+job2:
+  dependencies:
+    - job
+  script: ls
