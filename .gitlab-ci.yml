@@ -1,51 +1,13 @@
-before_script:
-  - export SYSTEM_VERSION=$CI_COMMIT_REF_NAME-v1.0.0
-
 stages:
-  - config
-  - build
-  - deploy
+  - s1
+  - s2
 
-config work[dev]:
-  stage: config
-  only:
-    - dev
-  tags:
-    - test-cicd-tag
+s1-job:
+  stage: s1
   script:
-    - ls
-    - kubectl --kubeconfig=./config create configmap dev-cicdtest-config -n testns --from-file etc/config.dev.json --dry-run=client -o yaml | kubectl apply -f -
+    - echo "s1"
 
-config work[test]:
-  stage: config
-  only:
-    - test
-  tags:
-    - test-cicd-tag
+s2-job:
+  stage: s2
   script:
-    - kubectl create configmap dev-cicdtest-config -n testns --from-file etc/config.test.json --dry-run=client -o yaml | kubectl apply -f -
-
-build work - system:
-  stage: build
-  tags:
-    - test-cicd-tag
-  script:
-    - echo "build hello"
-
-deploy work - system[dev]:
-  stage: deploy
-  only:
-    - dev
-  tags:
-    - test-cicd-tag
-  script:
-    - echo "deploy-dev hello"
-
-deploy work - system[test]:
-  stage: deploy
-  only:
-    - test
-  tags:
-    - test-cicd-tag
-  script:
-    - echo "deploy-test hello"
+    - echo "s2"
