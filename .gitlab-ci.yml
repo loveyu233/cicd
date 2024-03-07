@@ -1,5 +1,5 @@
 variables:
-  VAR: abcd
+  VAR: abc
 
 workflow:
   rules:
@@ -8,4 +8,4 @@ workflow:
     - when: never
 
 job:
-  script: echo "Hello, Rules!"
+  script: echo "Hello, Rules! $VAR"
