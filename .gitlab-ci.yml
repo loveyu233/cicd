@@ -1,5 +1,4 @@
-stages:
-
-deploy:
-  script: 
-    - echo "aaaa"
+job:
+  when: delayed
+  start_in: "10"
+  script: echo "hello"
