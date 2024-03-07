@@ -1,5 +1,3 @@
 job:
-  when: delayed
-  start_in: "10"
   script: echo1 "hello"
-  retry: 2
+  timeout: 1h 1m 1s
