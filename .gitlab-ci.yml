@@ -6,12 +6,7 @@ cache:
   paths:
     - target/*
 
-job-build:
-  stage: build
-  script: 
-    - mkdir target
-    - echo "build" > target/build.txt
-    - ls
+
 
 job-run:
   stage: run
