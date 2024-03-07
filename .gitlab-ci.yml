@@ -18,3 +18,7 @@ job-run:
   script: 
     - echo "run" > target/run.txt
     - ls
+    - tar -cvf target.tar target
+  artifacts:
+    paths:
+      - target
