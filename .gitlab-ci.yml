@@ -2,5 +2,6 @@ job:
   script: echo "adsad"
   artifacts:
     expose_as: "name_1"
+    name: "main"
     paths:
       - main.go
