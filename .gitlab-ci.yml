@@ -1,11 +1,20 @@
-variables:
-  VAR: abc
+stages:
+  - build
+  - run
 
-workflow:
-  rules:
-    - if: '$VAR == "abc"'
-      when: always
-    - when: never
+cache:
+  paths:
+    - target/*
 
-job:
-  script: echo "Hello, Rules! $VAR"
+job-build:
+  stage: build
+  script: 
+    - mkdir target
+    - echo "build" > target/build.txt
+    - ls
+
+job-run:
+  stage: run
+  script: 
+    - echo "run" > target/run.txt
+    - ls
