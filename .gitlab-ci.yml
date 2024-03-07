@@ -29,4 +29,4 @@ module-b-test:
     - sleep 10
   needs: 
     - job: ["module-b-build"]
-      artifacts: tre
+      artifacts: true
