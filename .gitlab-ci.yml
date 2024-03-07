@@ -1,3 +1,11 @@
+variables:
+  VAR: abc
+
+workflow:
+  rules:
+    - if: '$VAR == "abc"'
+      when: always
+    - when: never
+
 job:
-  script: echo "hello"
-  parallel: 3
+  script: echo "Hello, Rules!"
