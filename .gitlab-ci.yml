@@ -1,27 +1,6 @@
-stages:
-  - build
-  - run
-
-cache:
-  paths:
-    - target/*
-
-job-build:
-  stage: build
-  script:
-    - rm -rf target 
-    - mkdir target
-    - echo "build" > target/build.txt
-    - ls
-
-job-run:
-  stage: run
-  script: 
-    - cat target/build.txt
-    - echo "append" >> target/build.txt
-    - echo "run" > target/run.txt
-    - ls
-    - tar -cvf target.tar target
+job:
+  script: echo "adsad"
   artifacts:
+    expose_as: "name_1"
     paths:
-      - target
+      - main.go
