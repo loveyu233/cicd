@@ -2,9 +2,6 @@ stages:
   - build
   - run
 
-include:
-  - remote: http://10.220.10.35/dev/practice/configfile/-/raw/main/.gitlab-ci.yml
-
 job1:
   stage: build
-  script: echo "build123"
+  script: kubectl get pod -A
