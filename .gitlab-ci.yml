@@ -5,7 +5,7 @@ stages:
 include:
   project: backend/practice/ConfigFile
   ref: main
-  file: ".gitlab-ci.uml"
+  file: ".gitlab-ci.yml"
 
 job1:
   stage: build
