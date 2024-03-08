@@ -3,12 +3,10 @@ stages:
   - run
 
 include:
-  local: ci/config1-ci.yml
+  project: backend/practice/ConfigFile
+  ref: main
+  file: ".gitlab-ci.uml"
 
 job1:
   stage: build
   script: echo "build"
-
-job2:
-  stage: run
-  script: echo ".gitlab-ci"
