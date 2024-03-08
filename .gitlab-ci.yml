@@ -3,7 +3,7 @@ stages:
   - run
 
 include:
-  project: backend/practice/ConfigFile
+  project: practice/ConfigFile
   ref: main
   file: ".gitlab-ci.yml"
 
