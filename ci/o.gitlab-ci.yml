@@ -1,0 +1,13 @@
+stages:
+  - s1
+  - s2
+
+s1-job:
+  stage: s1
+  script:
+    - echo "s1"
+
+s2-job:
+  stage: s2
+  script:
+    - echo "s2"
