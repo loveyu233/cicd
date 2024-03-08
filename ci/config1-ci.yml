@@ -1,0 +1,3 @@
+config1-ci-job:
+  stage: run
+  script: echo "config1-ci"
