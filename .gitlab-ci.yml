@@ -7,6 +7,7 @@ stages:
   stage: build
 
 job1:
+  extends: .job
   script: echo "job1"
 
 job2:
