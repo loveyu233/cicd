@@ -11,4 +11,4 @@ job1:
 
 job2:
   stage: run
-  script: echo "config1-ci"
+  script: echo ".gitlab-ci"
