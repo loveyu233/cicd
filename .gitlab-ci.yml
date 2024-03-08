@@ -9,4 +9,4 @@ include:
 
 job1:
   stage: build
-  script: echo "build"
+  script: echo "build123"
