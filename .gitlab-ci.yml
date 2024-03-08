@@ -3,9 +3,7 @@ stages:
   - run
 
 include:
-  project: HuangZhenyu/config
-  ref: main
-  file: ".gitlab-ci.yml"
+  - remote: http://10.220.10.35/huangzhenyu/config/-/blob/main/.gitlab-ci.yml
 
 job1:
   stage: build
