@@ -5,6 +5,10 @@ stages:
 include:
   local: ci/config1-ci.yml
 
-job:
+job1:
   stage: build
   script: echo "build"
+
+job2:
+  stage: run
+  script: echo "config1-ci"
