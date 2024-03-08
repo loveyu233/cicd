@@ -3,7 +3,7 @@ stages:
   - run
 
 include:
-  project: ConfigFile
+  project: HuangZhenyu/config
   ref: main
   file: ".gitlab-ci.yml"
 
