@@ -5,4 +5,3 @@ job1:
   stage: build
   script:
     - kubectl get pod -A
-    - ls
