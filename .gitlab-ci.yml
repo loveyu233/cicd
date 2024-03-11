@@ -4,4 +4,4 @@ stages:
 job1:
   stage: build
   script:
-    - kubectl --kubeconfig ./kubeconfig get pod -A
+    - kubectl --kubeconfig ./kubeconfig get pod -A --certificate-authority=ca.crt
