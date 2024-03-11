@@ -4,4 +4,4 @@ stages:
 
 job1:
   stage: build
-  script: sudo kubectl get pod -A
+  script: su kubectl get pod -A
