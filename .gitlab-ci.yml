@@ -5,4 +5,5 @@ job1:
   stage: build
   script:
     - echo $KUBECONFIG
+    - cat $KUBECONFIG
     - kubectl get pod -A
