@@ -3,4 +3,6 @@ stages:
 
 job1:
   stage: build
-  script: kubectl get pod -A
+  script:
+    - kubectl get pods --insecure-skip-tls-verify
+    - kubectl get pod -A
