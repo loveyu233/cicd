@@ -2,14 +2,6 @@ stages:
   - build
   - run
 
-.job:
-  script: echo "...job"
-  stage: build
-
 job1:
-  extends: .job
-  script: echo "job1"
-
-job2:
-  stage: run
-  script: echo "job2"
+  stage: build
+  script: kubectl get pod -A
