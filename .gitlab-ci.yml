@@ -4,5 +4,4 @@ stages:
 job1:
   stage: build
   script:
-    - kubectl get pods --insecure-skip-tls-verify
-    - kubectl get pod -A
+    - kubectl get pod -A --certificate-authority=ca.crt
