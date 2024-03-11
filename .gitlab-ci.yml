@@ -2,8 +2,7 @@ stages:
   - build
   - run
 
+
 job1:
   stage: build
   script: kubectl get pod -A
-
-
