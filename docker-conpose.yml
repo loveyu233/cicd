@@ -1,0 +1,40 @@
+version: "1.0"
+
+services:
+  redis:
+    image: "redis:latest"
+    container_name: "redis"
+    networks:
+      - mynet
+    ports:
+      - "6379:6379"
+
+  pgsql:
+    image: "postgres:12"
+    container_name: "pgsql"
+    networks:
+      - mynet
+    environment:
+      POSTGRES_USER: pgsql
+      POSTGRES_PASSWORD: pgsql
+      POSTGRES_DB: pgsql
+    ports:
+      - "5432:5432"
+
+  main:
+    image: test
+    container_name: main
+    networks:
+      - mynet
+    links:
+      - pgsql
+      - redis
+    depends_on:
+      - pgsql
+      - redis
+    ports:
+      - "9001:9001"
+
+networks:
+  mynet:
+    driver: bridge
