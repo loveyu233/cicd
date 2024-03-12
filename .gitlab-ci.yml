@@ -1,36 +1,9 @@
+before_script:
+  - export SYSTEM_VERSION=$CI_COMMIT_REF_NAME-v3.0.12-fix02
+
 stages:
-  - config
   - build
-  - deploy
 
-config work[dev]:
-  stage: config
-  only:
-    - dev
-  script:
-    - kubectl create configmap dev-main-config -n hzy --from-file etc/config.dev.json --dry-run -o yaml | kubectl apply -f -
-
-config work[test]:
-  stage: config
-  only:
-    - test
-  script:
-    - kubectl create configmap test-main-config -n hzy --from-file etc/config.test.json --dry-run -o yaml | kubectl apply -f -
-
-build work[dev]:
+job:
   stage: build
-  only:
-    refs:
-      - dev
-      - /^dev-.*$/
-    changes:
-      - etc/*
-      - main.go
-      - .gitlab-ci.yml
-
-  script:
-    - export registry-server="https://hub.docker.com/"
-    - export name="loveyu233"
-    - export password="lovexiang233.."
-    - export email="loveyu22333@gmail.com"
-
+  script: echo "$SYSTEM_VERSION"
