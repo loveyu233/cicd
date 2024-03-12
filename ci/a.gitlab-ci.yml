@@ -1,0 +1,9 @@
+before_script:
+  - export SYSTEM_VERSION=$CI_COMMIT_REF_NAME-v3.0.12-fix02
+
+stages:
+  - build
+
+job:
+  stage: build
+  script: echo "$SYSTEM_VERSION"

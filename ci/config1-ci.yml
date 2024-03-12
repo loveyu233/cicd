@@ -1,7 +1,0 @@
-job2:
-  stage: run
-  script:
-    - echo "config1-ci111"
-    - echo "config1-ci222"
-  only:
-    - main
