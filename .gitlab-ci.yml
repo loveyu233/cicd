@@ -4,7 +4,7 @@ stages:
 build:
   stage: build
   image:
-    name: gcr.io/kaniko-project/executor:v1.14.0-debug
+    name: gcr.dockerproxy.com/kaniko-project/executor
     entrypoint: [""]
   script:
     - export CI_REGISTRY_AUTH_API_IMAGE="loveyu233/cicd:${SYSTEM_VERSION}"
