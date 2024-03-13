@@ -15,6 +15,4 @@ WORKDIR /app
 COPY --from=build /app/system_app /app/
 COPY --from=build /app/etc/* /app/etc/
 
-EXPOSE 9999
-
 CMD ["/app/system_app","-c","/app/etc/config.test.json"]
