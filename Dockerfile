@@ -12,8 +12,9 @@ FROM alpine:3.18
 
 WORKDIR /app
 
-COPY --from=build /app/system_app .
+COPY --from=build /app/system_app /app/
+COPY --from=build /app/etc/* /app/etc/
 
 EXPOSE 9999
 
-CMD ["./main"]
+CMD ["/app/system_app","-c","/app/etc/config.test.json"]
