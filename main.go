@@ -26,5 +26,5 @@ func main() {
 		fmt.Println("读取配置文件失败: ", err)
 		return
 	}
-	fmt.Println("读取到配置文件,内容为: ", string(all))
+	fmt.Println("hello读取到配置文件,内容为: ", string(all))
 }
